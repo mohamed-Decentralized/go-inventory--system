@@ -38,9 +38,9 @@ func getItems(w http.ResponseWriter,r *http.Request) {
 
 func addItem(w http.ResponseWriter,r *http.Request)  {
 	var item inventory.Item
-	body, _ := ioutil.ReadAll(r.Body) // Read the request body
-	log.Println("Request Body:", string(body)) // Log the body content
-	r.Body = ioutil.NopCloser(bytes.NewBuffer(body)) // Restore the body for further processing
+	body, _ := ioutil.ReadAll(r.Body)
+	log.Println("Request Body:", string(body)) 
+	r.Body = ioutil.NopCloser(bytes.NewBuffer(body))
 
 	if err := json.NewDecoder(r.Body).Decode(&item); err != nil {
 		log.Println(err)
